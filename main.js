@@ -14,4 +14,16 @@ function addBookToLibrary(author,title,pages,read){
     myLibrary.push(instance);
 }
 
-addBookToLibrary("J.R.R  Tolkien","The Hobbit",295,"not read yet");
+addBookToLibrary("J.R.R. Tolkien", "The Hobbit", 295, "not read yet");
+
+function displayBooks(){
+    const container = document.querySelector(".books");
+    myLibrary.forEach(Book => {
+        const square = document.createElement("div")
+        square.textContent = `${Book.title} by ${Book.author}, ${Book.pages} pages,${Book.read}`;
+        container.appendChild(square);
+    });
+    
+}
+
+displayBooks();
