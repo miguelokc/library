@@ -7,13 +7,40 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
     <h1>Library</h1>
 
-<div class="books"></div>
+    <dialog id = "dialog">
+        <form method="dialog">
+            <p>
+                <label>
+                    Author:
+                    <input type="text" id ="author-input" required/>
+                </label>
+                <label>
+                    Book Name:
+                    <input type="text" id = "book-input" required/>
+                </label>
+                <label>
+                    Pages:
+                    <input type="text" id = "pages-input" required/>
+                </label>
+                <label>
+                    Read:
+                    <input type="checkbox" id="read-input">
+                </label>
+            </p>
+            <div>
+                <input type = "submit" id = "submit" value="submit"/>
+            </div>
+        </form>
+    </dialog>
+    <p>
+        <button id = "show-dialog">New Book</button>
+    </p>
+    <output></output>
+    <div class="books"></div>
 
-
-
-
-<script src="main.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
