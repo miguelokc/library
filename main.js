@@ -59,7 +59,7 @@ function displayBooks(){
             const index = myLibrary.indexOf(Book);
             if (index !== -1){
                 myLibrary.splice(index,1);
-                displayBooks;
+                displayBooks();
             }
         })
 
