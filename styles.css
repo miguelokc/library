@@ -1,6 +1,10 @@
 .books{
-    
     border: 1px solid black;
     height: 500px;
     width: 500px;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    align-items: flex-start;
+    background-color: red;
 }

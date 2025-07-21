@@ -13,24 +13,23 @@ submitBtn.addEventListener ("click" , ()=>{
     const author = document.getElementById("author-input").value;
     const title = document.getElementById("book-input").value;
     const pages = document.getElementById("pages-input").value;
-    const read = document.getElementById("read-input").checked;
-    addBookToLibrary(author,title,pages,read);
+    addBookToLibrary(author,title,pages);
     displayBooks();
     
 
 })
 
 class Book{
-    constructor(author,title,pages,read){
+    constructor(author,title,pages){
         this.author = author;
         this.title = title;
         this.pages = pages;
-        this.read = read;
+        
     }
 }
 
-function addBookToLibrary(author,title,pages,read){
-    const instance = new Book (author,title,pages,read)
+function addBookToLibrary(author,title,pages){
+    const instance = new Book (author,title,pages)
     myLibrary.push(instance);
 }
 
@@ -39,14 +38,28 @@ function addBookToLibrary(author,title,pages,read){
 function displayBooks(){
     const container = document.querySelector(".books");
     container.innerHTML = "";
+
     myLibrary.forEach(Book => {
+        
         const btn = document.createElement('button');
-        const square = document.createElement("div")
-        square.textContent = `${Book.title} by ${Book.author}, ${Book.pages} pages,${Book.read}`;
+        const label = document.createElement("label");
+        const checkbox = document.createElement('input');
+        checkbox.type = "checkbox";
+        const square = document.createElement("div");
+        square.textContent = `${Book.title} by ${Book.author}, ${Book.pages} pages.`;
         container.appendChild(square);
-        btn.innerText = "Read Status";
-        container.appendChild(btn)
+        container.appendChild(btn);
+        btn.innerText = "Delete";
+        btn.addEventListener('click',()=>{
+            square.remove();
+
+        })
+        container.appendChild(checkbox);
+        label.appendChild(checkbox);
+        label.appendChild(document.createTextNode("Read?"));
+        container.appendChild(label);
     });
+
     
 }
 
