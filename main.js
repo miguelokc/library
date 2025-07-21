@@ -40,24 +40,34 @@ function displayBooks(){
     container.innerHTML = "";
 
     myLibrary.forEach(Book => {
-        
-        const btn = document.createElement('button');
+        const bookCard = document.createElement("div")
+        bookCard.classList.add("book-card");
+
+        const square = document.createElement("div");
+        square.textContent = `${Book.title} by ${Book.author}, ${Book.pages} pages.`;
+
         const label = document.createElement("label");
         const checkbox = document.createElement('input');
         checkbox.type = "checkbox";
-        const square = document.createElement("div");
-        square.textContent = `${Book.title} by ${Book.author}, ${Book.pages} pages.`;
-        container.appendChild(square);
-        container.appendChild(btn);
-        btn.innerText = "Delete";
-        btn.addEventListener('click',()=>{
-            square.remove();
-
-        })
-        container.appendChild(checkbox);
         label.appendChild(checkbox);
         label.appendChild(document.createTextNode("Read?"));
-        container.appendChild(label);
+
+        
+        const btn = document.createElement('button');
+        btn.innerText = "Delete";
+        btn.addEventListener('click',()=>{
+            const index = myLibrary.indexOf(Book);
+            if (index !== -1){
+                myLibrary.splice(index,1);
+                displayBooks;
+            }
+        })
+
+        bookCard.appendChild(square);
+        bookCard.appendChild(label);
+        bookCard.appendChild(btn);
+
+        container.appendChild(bookCard);
     });
 
     
